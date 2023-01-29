@@ -1,5 +1,7 @@
 # Image tools for converting files to and from ZX Spectrum Next file
 
+Version 2.00.02
+
 A set of tools used to complement the netpbm set of image processing
 tools with reasonable interoperability with the functions provided by
 imagemagick and graphicsmagick.
