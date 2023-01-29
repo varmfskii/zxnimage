@@ -21,7 +21,7 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    make PAMPREFIX=1 PREFIX="$pkgdir" install
+    make PAMPREFIX=1 PREFIX="$pkgdir/usr/local" install
 }
 
 
