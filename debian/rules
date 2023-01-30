@@ -15,12 +15,12 @@
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
 build:
-	make PAMPREFIX=1
+	make
 
 binary: build
 
 install:
-	make PAMPREFIX=1 PREFIX=debian/zxnimage install
+	make PREFIX=debian/zxnimage install
 
 %:
 	dh $@
