@@ -104,7 +104,7 @@ available via the **info**(1) system.
 
 # AUTHOR
 
-Theodore (Alex) Evans <alex@starfive>
+Theodore (Alex) Evans <varmfskii@gmail.com>
 :   Wrote this manpage for the Debian system.
 
 # COPYRIGHT

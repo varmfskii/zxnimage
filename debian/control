@@ -1,7 +1,7 @@
 Source: zxnimage
 Section: unknown
 Priority: optional
-Maintainer: Theodore (Alex) Evans <alex@starfive>
+Maintainer: Theodore (Alex) Evans <varmfskii@gmail.com>
 Rules-Requires-Root: no
 Build-Depends:
  debhelper-compat (= 13), libnetpbm11-dev
