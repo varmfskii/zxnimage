@@ -17,7 +17,8 @@ libzxnimage.so : $(OBJS:%.o=%.c) zxntools.h
 	make -f dynamic.mk
 
 install: all
-	mkdir -p $(PREFIX)/lib/
+	mkdir -p $(PREFIX)/include/ $(PREFIX)/lib/
+	$(CP) zxntools.h $(PREFIX)/include/
 	$(CP) libzxntools.a libzxntools.so $(PREFIX)/lib/
 
 .PHONY : clean distclean all

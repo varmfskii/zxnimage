@@ -20,12 +20,13 @@ x := $(foreach task, $(TASKS), $(eval y = $(foreach tgt, $(TARGETS), $(eval $(ca
 ifeq ($(OS),Windows_NT)
 else
 install : all
-	mkdir -p $(PREFIX)/bin $(PREFIX)/man/man1 $(PREFIX)/man/man3
+	mkdir -p $(PREFIX)/bin
 	for file in $(TARGETS); do cp $$file/$$file $(PREFIX)/bin; done
 	rm -f $(PREFIX)/bin/ppmtoslr $(PREFIX)/bin/slrtoppm
 	cd $(PREFIX)/bin && ln -s ppmtosl2 ppmtoslr
 	cd $(PREFIX)/bin && ln -s sl2toppm slrtoppm
 	make -C libzxntools install
+	mkdir -p $(PREFIX)/man/man1 $(PREFIX)/man/man3
 	cp mansrc/*.1 $(PREFIX)/man/man1
 	cp mansrc/*.3 $(PREFIX)/man/man3
 endif
