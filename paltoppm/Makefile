@@ -1,18 +1,14 @@
 ifneq ($(IMAGE_MK),1)
 include ../image.mk
 endif
-OBJS=paltoppm.o libzxntools.a
+OBJS=paltoppm.o
 
-all: paltoppm
+all: libzxntools paltoppm
 
 paltoppm : $(OBJS)
 	$(CC) -o $@ $^ $(LOPTS) -lnetpbm
 
 paltoppm.o : paltoppm.c paltoppm.h
-../libzxntools/libzxntools.a : libzxntools
-
-libzxntools.a : ../libzxntools/libzxntools.a
-	$(CP) ../libzxntools/libzxntools.a .
 
 paltoppm.h : ../libzxntools/zxntools.h
 	touch $@

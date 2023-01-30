@@ -1,19 +1,15 @@
 ifneq ($(IMAGE_MK),1)
 include ../image.mk
 endif
-OBJS=shrtopbm.o shrtobm.o libzxntools.a
+OBJS=shrtopbm.o shrtobm.o
 
-all: shrtopbm
+all: libzxntools shrtopbm
 
 shrtopbm : $(OBJS)
 	$(CC) -o $@ $^ $(LOPTS) -lnetpbm
 
 shrtopbm.o : shrtopbm.c shrtopbm.h
 shrtobm.o : shrtobm.c shrtopbm.h
-../libzxntools/libzxntools.a : libzxntools
-
-libzxntools.a : ../libzxntools/libzxntools.a
-	$(CP) ../libzxntools/libzxntools.a .
 
 shrtopbm.h : ../libzxntools/zxntools.h
 	touch $@

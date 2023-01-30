@@ -6,19 +6,34 @@ OBJS=allocate.o col_dist.o deallocate.o decimate.o misc.o palette.o	\
 	writeixed.o writergb.o writezxn.o
 
 ifeq ($(SHARED),1)
-all : libzxntools.a libzxntools.so
+CFLAGS+=-fPIC
+all : libzxntools.so
+
+install: all
+	mkdir -p $(PREFIX)/lib/
+	$(CP) libzxntools.so $(PREFIX)/lib/
+
+libzxntools.so : $(OBJS)
+	$(CC) -shared -o $@ $^
+
+
+test : test.o libzxntools.so
+	$(CC) -o $@ $< $(LOPTS) -L. -lzxntools -lnetpbm
 else
 all : libzxntools.a
-endif
+
+install: all
+	mkdir -p $(PREFIX)/lib/
+	$(CP) libzxntools.a $(PREFIX)/lib/
 
 libzxntools.a : $(OBJS)
 	$(AR) cr $@ $^
 
-libzxntools.so : $(OBJS)
-	-$(CC) -shared -o $@ $^
 
 test : test.o libzxntools.a
 	$(CC) -o $@ $^ $(LOPTS) -lnetpbm
+endif
+
 
 col_dist.o : col_dist.c zxntools.h
 deallocate.o : deallocate.c zxntools.h
@@ -43,5 +58,7 @@ clean :
 distclean : clean
 	$(RM) test libzxntools.a libzxntools.so
 
-install: all
-	-$(CP) libzxntools.a libzxntools.so $(PREFIX)/libs/
+
+ifeq ($(SHARED),1)
+else
+endif

@@ -26,7 +26,7 @@ int main() {
   for(r=0; r<256; r++) pal.dat[r].rgba=0;
   free_pal(pal);
   fprintf(stderr, "allocate and free pal:\n");
-  rgb=new_rgb(1024, 768);
+  rgb=new_rgb(1024, 768, 255);
   for(r=0; r<768; r++)
     for(c=0; c<1024; c++) rgb.dat[r][c].rgba=0;
   free_rgb(rgb);

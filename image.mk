@@ -9,6 +9,7 @@ CP=cp
 endif
 CC=gcc
 CFLAGS += -Wall
+LOPTS = -L$${PWD}/libzxntools -lzxntools
 ifeq ($(DEBUG),1)
 CFLAGS += -DDEBUG -g
 else
@@ -23,4 +24,4 @@ endif
 ifeq ($(PAMPREFIX),1)
 CFLAGS += -DPAMPREFIX
 endif
-export IMAGE_MK CFLAGS
+export IMAGE_MK CFLAGS LOPTS

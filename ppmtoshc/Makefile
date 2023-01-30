@@ -1,19 +1,15 @@
 ifneq ($(IMAGE_MK),1)
 include ../image.mk
 endif
-OBJS=ppmtoshc.o writeshc.o libzxntools.a
+OBJS=ppmtoshc.o writeshc.o
 
-all: ppmtoshc
+all: libzxntools ppmtoshc
 
 ppmtoshc : $(OBJS)
 	$(CC) -o $@ $^ $(LOPTS) -lnetpbm
 
 ppmtoshc.o : ppmtoshc.c ppmtoshc.h
 writeshc.o : writeshc.c ppmtoshc.h
-../libzxntools/libzxntools.a : libzxntools
-
-libzxntools.a : ../libzxntools/libzxntools.a
-	$(CP) ../libzxntools/libzxntools.a .
 
 ppmtoshc.h : ../libzxntools/zxntools.h
 	touch $@

@@ -5,7 +5,7 @@ void writezxn(ixed_t ixed, int width, int height,
 	      int depth, int swap, FILE *out) {
   /* Assumes depth is 1, 2, 4, or 8
    swap = swap x and y axes */
-  int r, c, sc, bits, byte, ppb;
+  int r, c, sc, byte, ppb;
 
   if (get_verbose()>1)
     fprintf(stderr, "writezxn(ixed_t: %dx%d, width: %d, height: %d, "
